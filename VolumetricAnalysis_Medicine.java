@@ -264,7 +264,6 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
                         int z2 = z + disp[2];
                         if (x2 >= 0 && x2 < W && y2 >= 0 && y2 < H && z2 >= 0 && z2 < numberSlices) {
                             if (isSelection(new int[]{x2, y2, z2}) && !isAlreadyVisited(x2, y2, z2)) {
-                                IJ.log("Adding neighbor voxel: (" + x2 + ", " + y2 + ", " + z2 + ")");
                                 airway.add(new int[]{x2, y2, z2});
                             }
                         }
