@@ -34,7 +34,9 @@ Radio density can vary based on subtle differences. Threshold parameter allows y
 
 
 ## Support
-For support, please visit our support page or contact our helpdesk at support@example.com.
+For support, please contact the author:
+> Jonathan Collard de Beaufort
+> jonathancdb@gmail.com
 
 ## License
 This software is licensed under the MIT License. See the LICENSE file for more details.
