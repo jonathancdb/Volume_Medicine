@@ -130,13 +130,13 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
                 IJ.log("Threshold range: " + lowRange + " to " + highRange);
 
                 // Test pixel logging
-                IJ.log("Test pixel: " + isSelection(new int[]{1, 1, 1}));
+                //IJ.log("Test pixel: " + isSelection(new int[]{201, 273, 1}));
 
                 ArrayList<int[]> seedArray = new ArrayList<>();
                 seedArray.add(new int[]{offScreenX, offScreenY, imp.getCurrentSlice() - 1});
 
-                ArrayList<int[]> airVoxels = generation(seedArray, 10);
-                IJ.log("Air Voxels Found: " + airVoxels.size());
+                ArrayList<int[]> airVoxels = generation(seedArray, 100);
+                IJ.log("Voxels Found: " + airVoxels.size());
 
                 // Create and show the new image
                 ImagePlus filteredImage = IJ.createImage("Trachea", "RGB Color", W, H, numberSlices);
@@ -247,7 +247,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
 
     private ArrayList<int[]> bioVenture(ArrayList<int[]> cList) {
         ArrayList<int[]> airway = new ArrayList<>();
-
+		
         for (int[] point : cList) {
             int x = point[0];
             int y = point[1];
@@ -255,14 +255,18 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
 
             if (!isAlreadyVisited(x, y, z)) {
                 setAlreadyVisited(x, y, z);
+                
                 if (isSelection(new int[]{x, y, z})) {
                     int[][] neighbors = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}, {1, 1, 0}, {1, -1, 0}, {-1, -1, 0}, {-1, 1, 0}};
                     for (int[] disp : neighbors) {
                         int x2 = x + disp[0];
                         int y2 = y + disp[1];
                         int z2 = z + disp[2];
-                        if (isSelection(new int[]{x2, y2, z2}) && !isAlreadyVisited(x2, y2, z2)) {
-                            airway.add(new int[]{x2, y2, z2});
+                        if (x2 >= 0 && x2 < W && y2 >= 0 && y2 < H && z2 >= 0 && z2 < numberSlices) {
+                            if (isSelection(new int[]{x2, y2, z2}) && !isAlreadyVisited(x2, y2, z2)) {
+                                IJ.log("Adding neighbor voxel: (" + x2 + ", " + y2 + ", " + z2 + ")");
+                                airway.add(new int[]{x2, y2, z2});
+                            }
                         }
                     }
                 }
@@ -272,20 +276,16 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
     }
 
     private ArrayList<int[]> generation(ArrayList<int[]> seed, int threshold) {
-        ArrayList<int[]> prevGen = new ArrayList<>();
-        ArrayList<int[]> newSearch = seed;
-        ArrayList<int[]> cumulative = new ArrayList<>();
-
-        while (newSearch.size() < prevGen.size() * threshold) {
-            if (!newSearch.isEmpty()) {
-                prevGen = new ArrayList<>(newSearch);
-                ArrayList<int[]> nextGen = bioVenture(prevGen);
-                cumulative = appendIfNotDuplicate(cumulative, nextGen);
-                newSearch = nextGen;
-            } else {
-                return cumulative;
-            }
-        }
-        return cumulative;
-    }
+    	ArrayList<int[]> prevGen = seed;
+    	ArrayList<int[]> newSearch = seed;
+    	ArrayList<int[]> cumulative = new ArrayList<>();
+    	while (newSearch.size() >= 0 && newSearch.size() < prevGen.size() * threshold) {
+        	
+        	prevGen = new ArrayList<>(newSearch);
+        	ArrayList<int[]> nextGen = bioVenture(prevGen);
+        	cumulative = appendIfNotDuplicate(cumulative, nextGen);
+        	newSearch = nextGen;
+    	}
+    	return cumulative;
+	}
 }
