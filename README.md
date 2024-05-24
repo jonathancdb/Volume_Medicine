@@ -6,9 +6,9 @@ This file is part of the VolumetricAnalysis_Medicine software.
 
 Welcome to the Volumetric Analysis in Medicine!
 
-This software is designed specifically for medical professionals, allowing you to select an anatomical structure on a CT scan as well as visualize and calculate its volume with ease.
+This software is designed specifically for physicians and researchers, enabling the user to select and visualize anatomical structures on a CT scan and calculate their volume with ease.
 
-VolumetricAnalysis_Medicine intends to provide physicians and researchers a greater ability to analyze and describe complex patient anatomy. This tool provides physicians the ability to select an anatomical feature, isolate it from surrounding tissue, and visualize it in 3 dimensions. The code further allows the user to describe the selected anatomy, such as but not limited to volume, cubic volume, and dimensions.
+VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and describe complex patient anatomy. For the latter, this tool allows the user to describe the selected anatomy, such as but not limited to volume, cubic volume, and dimensions.
 
 ## Instructions for Usage 
 
@@ -34,15 +34,17 @@ These files *must* be in DICOM format (this is standard in medicine). The code i
 ### Threshold
 Radio density can vary based on subtle differences. Threshold parameter allows you to specify the tolerance of the program.
 
+## Future Directions
+Next update will focus on improving run time of the algorithm and a streamlined run process.
 
-## Support
-For support, please contact the author:
+## Contact
+For support, comments, or feedback, please contact the author:
 > Jonathan Collard de Beaufort
 > jonathancdb@gmail.com
 
 ## License
 This software is licensed under the MIT License. See the LICENSE file for more details.
 
-Thank you for using the Medical Imaging Volume Calculator. We hope it enhances your medical practice and research.
+Thank you for using VolumetricAnalysis_Medicine. We hope it enhances your medical practice and research.
 
 
