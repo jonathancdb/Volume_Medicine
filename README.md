@@ -20,6 +20,8 @@ This plugin *requires a stack* (ie a series of 2D images, called slices, that re
 - Use the "Browse" button in the pop up to locate the **folder** containing the file sequence
 - Select "Ok"
 
+These files *must* be in DICOM format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
+
 ### PlugIn Installation:
 - 
 
