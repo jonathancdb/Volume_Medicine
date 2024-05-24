@@ -110,7 +110,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
 
                 canvas.removeMouseListener(this);
                 IJ.log("--- Recording Pixel Coordinate ---");
-                IJ.log("Pixel Coordinate Recorded: " + offScreenX + " " + offScreenY);
+                IJ.log("Selected Pixel Coordinate: " + offScreenX + " " + offScreenY);
 
                 logMetaData(imp);
 
@@ -139,7 +139,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
                 IJ.log("Voxels Found: " + airVoxels.size());
 
                 // Create and show the new image
-                ImagePlus filteredImage = IJ.createImage("Trachea", "RGB Color", W, H, numberSlices);
+                ImagePlus filteredImage = IJ.createImage("Isolated Anatomy", "RGB Color", W, H, numberSlices);
                 ImageProcessor processor = filteredImage.getProcessor();
 
                 int colorGrad = 1;
@@ -163,7 +163,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
 
     private int askForNoiseSensitivity() {
         GenericDialog gd = new GenericDialog("Noise Sensitivity");
-        gd.addNumericField("Enter an integer (recommended: 10):", 10, 0);
+        gd.addNumericField("Enter an integer (recommended: 200):", 200, 0);
         gd.showDialog();
         if (gd.wasCanceled()) {
             return -1;
@@ -178,7 +178,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
 
     public void logMetaData(ImagePlus imp) {
         IJ.log(" ");
-        IJ.log("--- Fetching Image Metadata ---");
+        IJ.log("Fetching Image Metadata...");
 
         String imgRowString = DicomTools.getTag(imp, "0028,0010").trim(); // Image Rows
         String imgColString = DicomTools.getTag(imp, "0028,0011").trim(); // Image Columns
@@ -192,11 +192,13 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
             rescIntercept = Integer.parseInt(rescInterceptStr);
             rescSlope = Integer.parseInt(rescSlopeStr);
 
-            IJ.log("Image Rows: " + imgRow + "\n" +
+			// NOTE: Commented out log update -- unnecessary for average user
+            /*IJ.log("Image Rows: " + imgRow + "\n" +
                    "Image Columns: " + imgCol + "\n" +
                    "Pixel Spacing: " + pixSpacing + "\n" +
                    "Rescale Intercept: " + rescIntercept + "\n" +
                    "Rescale Slope: " + rescSlope);
+            */
         } catch (NumberFormatException e) {
             IJ.error("Error parsing DICOM metadata: " + e.getMessage());
         }
@@ -257,7 +259,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
                 setAlreadyVisited(x, y, z);
                 
                 if (isSelection(new int[]{x, y, z})) {
-                    int[][] neighbors = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}, {1, 1, 0}, {1, -1, 0}, {-1, -1, 0}, {-1, 1, 0}};
+                    int[][] neighbors = {{-1, 0, 0}, {1, 0, 0}, {0, -1, 0}, {0, 1, 0}, {0, 0, -1}, {0, 0, 1}};
                     for (int[] disp : neighbors) {
                         int x2 = x + disp[0];
                         int y2 = y + disp[1];
