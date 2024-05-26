@@ -1,8 +1,22 @@
 # volume-medicine
 
-This file is part of the VolumetricAnalysis_Medicine software.
+This file is part of the **VolumetricAnalysis_Medicine** software.
 
-## Introduction
+# Table of Content
+1. [Introduction](#introduction)
+2. [PlugIn Requirements](#requirements)
+    1. [How to Open a CT Scan in FIJI ImageJ](#open_a_ct_scan)
+4. [PlugIn Installation](#plugin_installation)
+5. [Instructions](#instructions)
+    1. [Threshold](#threshold_desc)
+6. [Future Directions](#future_directions)
+7. [Contribution](#contribution)
+8. [Contact](#contact)
+9. [License Information](#license_information)
+10. [Conclusion](#conclusion)
+
+
+## Introduction <a name="introduction"></a>
 
 Welcome to the Volumetric Analysis in Medicine!
 
@@ -10,41 +24,62 @@ This software is designed specifically for physicians and researchers, enabling 
 
 VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and describe complex patient anatomy. For the latter, this tool allows the user to describe the selected anatomy, such as but not limited to volume, cubic volume, and dimensions.
 
-## Instructions for Usage 
 
-This plugin *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow these steps:
+## PlugIn Requirements <a name="requirements"></a>
 
-### Open a CT Scan:
-
-- Click on "File" > "Import" > "Image Sequence"
-- Use the "Browse" button in the pop up to locate the **folder** containing the file sequence
-- Select "Ok"
-
-These files *must* be in DICOM format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
-
-### PlugIn Installation:
-- 
+This plugin operates in FIJI Is Just ImageJ, which can be downloaded here. This plugin *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow these steps:
 
 
-### Select an Anatomical Structure:
-- Run the PlugIn and follow prompts
-- You will be prompted to first select a point on the anatomical structure you wish to analyze
-- Click this point on the CT scan
+### Open a CT Scan <a name="open_a_ct_scan"></a>
 
-### Threshold
+
+1. Click on the following sequence, as shown in the image below
+    - File > Import > Image Sequence
+![CT Scan Import Sequence](./Images/import_sequence.png)
+2. Use the "Browse" button in the pop up to locate the **folder** containing the file sequence.
+![CT Scan Import Sequence](./Images/browse_button.png)
+3. Select "Ok"
+
+These files *must* be in DICOM (.dcm) format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
+
+## PlugIn Installation <a name="plugin_installation"></a>
+1. Download the file as a .jar file
+2. Open ImageJ
+3. Navigate to Plugins > Install...
+4. Select the downloaded JAR file
+5. Install it into the plugins folder
+
+## Instructions for Use <a name="instructions"></a>
+1. Open CT scan in ImageJ 
+2. Run the PlugIn and follow prompts
+    - You will be prompted to first select a point on the anatomical structure you wish to analyze
+    ![CT Scan Import Sequence](./Images/click_on_image.png)
+    - Click this point on the CT scan
+    - Select a threshold
+    ![CT Scan Import Sequence](./Images/noise_sensitivity.png)
+3. Time to run depends exponentially on the volume of the structure
+![CT Scan Import Sequence](./Images/result.png)
+
+### Threshold <a name="threshold_desc"></a>
 Radio density can vary based on subtle differences. Threshold parameter allows you to specify the tolerance of the program.
 
-## Future Directions
+## Future Directions <a name="future_directions"></a>
 Next update will focus on improving run time of the algorithm and a streamlined run process.
 
-## Contact
-For support, comments, or feedback, please contact the author:
-> Jonathan Collard de Beaufort
-> jonathancdb@gmail.com
+## Contribution <a name="contributions"></a>
+If you would like to contribute software or advice on future directions, please reach out using the contact information in the following section
 
-## License
-This software is licensed under the MIT License. See the LICENSE file for more details.
+## Contact <a name="contact"></a>
+For support, comments, or feedback, please contact the author:
+> Jonathan Collard de Beaufort \
+> jonathancdb@gmail.com \
+> Syracuse University, BS '25 \
+> SUNY Upstate Medical School, MD '29
+
+## License <a name="license_information"></a>
+This software is licensed under the GNU General Public License. See the LICENSE file for more details.
 
 Thank you for using VolumetricAnalysis_Medicine. We hope it enhances your medical practice and research.
 
+## Conclusion <a name="conclusion"></a>
 
