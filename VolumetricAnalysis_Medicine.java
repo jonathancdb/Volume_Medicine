@@ -37,6 +37,8 @@ import ij.gui.ImageCanvas;
 import ij.plugin.filter.PlugInFilter;
 import ij.process.ImageProcessor;
 import ij.util.DicomTools;
+import ij3d.Image3DUniverse;
+
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -53,6 +55,8 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
     private int lowRange;
     private int highRange;
     private int userDefinedHU;
+    private int pixelSpacing;
+    private double volume;
 
     @Override
     public int setup(String arg, ImagePlus imp) {
@@ -157,6 +161,11 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
                 }
 
                 filteredImage.show();
+                
+				double[] pixelSpacing = {voxelWidth, voxelDepth};
+                double volume = volumeCalculator(airVoxels.size(), pixelSpacing, voxelHeight);
+                IJ.log("Volume: " + volume + "mm^3");
+
             }
         });
     }
@@ -185,7 +194,9 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
         String pixSpacing = DicomTools.getTag(imp, "0028,0030").trim();   // Pixel Spacing
         String rescInterceptStr = DicomTools.getTag(imp, "0028,1052").trim();   // Rescale Intercept
         String rescSlopeStr = DicomTools.getTag(imp, "0028,1053").trim();   // Rescale Slope
-
+        
+        int pixelSpacing = convertPixelSpacingToInt(pixSpacing);
+		
         try {
             int imgRow = Integer.parseInt(imgRowString);
             int imgCol = Integer.parseInt(imgColString);
@@ -202,6 +213,7 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
         } catch (NumberFormatException e) {
             IJ.error("Error parsing DICOM metadata: " + e.getMessage());
         }
+       
     }
 
     private int getIndex(int x, int y, int z) {
@@ -289,4 +301,42 @@ public class VolumetricAnalysis_Medicine implements PlugInFilter {
     	}
     	return cumulative;
 	}
+	
+	    public static int convertPixelSpacingToInt(String pixSpacing) {
+        if (pixSpacing == null || pixSpacing.isEmpty()) {
+            throw new IllegalArgumentException("Pixel Spacing is null or empty");
+        }
+
+        // Debug print to check the raw pixSpacing value
+        System.out.println("Raw Pixel Spacing: " + pixSpacing);
+
+        // Split the string to get the first part of the pixel spacing
+        String[] parts = pixSpacing.split("\\\\");
+        if (parts.length < 1) {
+            throw new IllegalArgumentException("Invalid Pixel Spacing format");
+        }
+
+        // Debug print to check the parsed parts
+        System.out.println("Parsed parts: ");
+        for (String part : parts) {
+            System.out.println(part);
+        }
+
+        try {
+            // Convert the first part to a double
+            double pixelSpacingDouble = Double.parseDouble(parts[0].trim());
+            // Debug print to check the parsed double value
+            System.out.println("Parsed double value: " + pixelSpacingDouble);
+            // Convert the double to an integer
+            return (int) pixelSpacingDouble;
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException("Pixel Spacing is not a valid number", e);
+        }
+    }
+    
+	 public static double volumeCalculator(int numVoxels, double[] pixelSpacing, double sliceThickness) {
+        double voxelVolume = pixelSpacing[0] * pixelSpacing[1] * sliceThickness;
+        return numVoxels * voxelVolume;
+    }
+	
 }
