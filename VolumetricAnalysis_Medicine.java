@@ -27,7 +27,7 @@
 // May 2024
 //
 // If you download and/or use this script, please email me. I am curious to hear
-// from physicians and researchers.
+// from physicians and researchers on their experience.
 //
 
 import ij.IJ;
