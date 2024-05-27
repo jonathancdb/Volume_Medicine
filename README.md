@@ -27,7 +27,10 @@ VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and 
 
 ## PlugIn Requirements <a name="requirements"></a>
 
-This plugin operates in FIJI Is Just ImageJ, which can be downloaded here. This plugin *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow these steps:
+This plugin operates in FIJI Is Just ImageJ, which can be downloaded [here](https://imagej.net/software/fiji/downloads). This plugin *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow the steps below.
+
+These files *must* be in DICOM (.dcm) format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
+
 
 
 ### Open a CT Scan <a name="open_a_ct_scan"></a>
@@ -40,7 +43,6 @@ This plugin operates in FIJI Is Just ImageJ, which can be downloaded here. This 
 ![CT Scan Import Sequence](./Images/browse_button.png)
 3. Select "Ok"
 
-These files *must* be in DICOM (.dcm) format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
 
 ## PlugIn Installation <a name="plugin_installation"></a>
 1. Download the file as a .jar file
@@ -61,10 +63,10 @@ These files *must* be in DICOM (.dcm) format (this is standard in medicine). The
 ![CT Scan Import Sequence](./Images/result.png)
 
 ### Threshold <a name="threshold_desc"></a>
-Radio density can vary based on subtle differences. Threshold parameter allows you to specify the tolerance of the program.
+Radio density can vary based on subtle differences. Threshold parameter allows you to specify the tolerance of the program for such differences. See [this link](https://radiopaedia.org/articles/hounsfield-unit?lang=us) for more information on radiodensity.
 
 ## Future Directions <a name="future_directions"></a>
-Next update will focus on improving run time of the algorithm and a streamlined run process.
+Next update will focus on improving run time of the algorithm for larger structures, and a streamlined process for the code. Additionally, a 3D viewer will be integrated within the program.
 
 ## Contribution <a name="contributions"></a>
 If you would like to contribute software or advice on future directions, please reach out using the contact information in the following section
