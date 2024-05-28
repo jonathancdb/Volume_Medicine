@@ -30,7 +30,8 @@
  from physicians and researchers on their experience.
  
  To cite this file: 
-
+ 
+ Collard de Beaufort, J. (2024). Anatomical Isolation in CT Scans for DICOM: PlugIn for ImageJ. Zenodo. https://doi.org/10.5281/zenodo.11265937
 
 */
 
