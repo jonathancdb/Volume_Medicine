@@ -21,6 +21,7 @@ This software is designed specifically for physicians and researchers, enabling 
 
 VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and describe complex patient anatomy. For the latter, this tool allows the user to describe the selected anatomy, such as but not limited to volume, cubic volume, and dimensions.
 
+![alt text](VolumeViewer_Image.png)
 
 ## PlugIn Requirements <a name="requirements"></a>
 
