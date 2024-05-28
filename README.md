@@ -1,8 +1,5 @@
-# volume-medicine
 
-This file is part of the **VolumetricAnalysis_Medicine** software.
-
-# Table of Content
+# Table of Contents
 1. [Introduction](#introduction)
 2. [PlugIn Requirements](#requirements)
     1. [How to Open a CT Scan in FIJI ImageJ](#open_a_ct_scan)
@@ -27,7 +24,7 @@ VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and 
 
 ## PlugIn Requirements <a name="requirements"></a>
 
-This plugin operates in FIJI Is Just ImageJ, which can be downloaded [here](https://imagej.net/software/fiji/downloads). This plugin *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow the steps below.
+This PlugIn operates in FIJI Is Just ImageJ, which can be downloaded [here](https://imagej.net/software/fiji/downloads). This PlugIn *requires a stack* (ie a series of 2D images, called slices, that represent a volume). To open a stack or image sequence in FIJI ImageJ, follow the steps below.
 
 These files *must* be in DICOM (.dcm) format (this is standard in medicine). The code is able to function on any type of anatomic scans (transverse, sagittal, and coronal scans).
 
@@ -47,9 +44,9 @@ These files *must* be in DICOM (.dcm) format (this is standard in medicine). The
 ## PlugIn Installation <a name="plugin_installation"></a>
 1. Download the file as a .jar file
 2. Open ImageJ
-3. Navigate to Plugins > Install...
+3. Navigate to PlugIns > Install...
 4. Select the downloaded JAR file
-5. Install it into the plugins folder
+5. Install it into the PlugIn folder
 
 ## Instructions for Use <a name="instructions"></a>
 1. Open CT scan in ImageJ 
@@ -63,10 +60,11 @@ These files *must* be in DICOM (.dcm) format (this is standard in medicine). The
 ![CT Scan Import Sequence](./Images/result.png)
 
 ### Threshold <a name="threshold_desc"></a>
-Radio density can vary based on subtle differences. Threshold parameter allows you to specify the tolerance of the program for such differences. See [this link](https://radiopaedia.org/articles/hounsfield-unit?lang=us) for more information on radiodensity.
+Radio density can vary based on subtle differences. Therefore, the threshold parameter allows you to specify the tolerance of the program and provide a range of radiodensity values accepted by the algorithm. See [this link](https://radiopaedia.org/articles/hounsfield-unit?lang=us) for more information on radiodensity.
 
 ## Future Directions <a name="future_directions"></a>
-Next update will focus on improving run time of the algorithm for larger structures, and a streamlined process for the code. Additionally, a 3D viewer will be integrated within the program.
+Future updates will focus on improving the algorithm's run time for larger structures and streamlining the code. Additionally, a 3D viewer will be integrated within the program.
+
 
 ## Contribution <a name="contributions"></a>
 If you would like to contribute software or advice on future directions, please reach out using the contact information in the following section
@@ -82,6 +80,3 @@ For support, comments, or feedback, please contact the author:
 This software is licensed under the GNU General Public License. See the LICENSE file for more details.
 
 Thank you for using VolumetricAnalysis_Medicine. We hope it enhances your medical practice and research.
-
-## Conclusion <a name="conclusion"></a>
-
