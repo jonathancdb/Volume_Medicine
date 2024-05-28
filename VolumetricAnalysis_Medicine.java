@@ -13,22 +13,26 @@
 
     You should have received a copy of the GNU General Public License
     along with VolumetricAnalysis_Medicine. If not, see <http://www.gnu.org/licenses/>.
-*/
 
-// VolumetricAnalysis_Medicine.java
-//
-// This script allows the user to select a point on a CT scan,
-// finds the entire volume of the selected point, and isolates it.
-// The plugin then calculates volume and dimensions, as well as visualizes
-// the volume. This is intended for medical use as a tool for researchers and
-// doctors to visualize complex anatomy.
-//
-// Author: Jonathan Collard de Beaufort, jonathancdb@gmail.com
-// May 2024
-//
-// If you download and/or use this script, please email me. I am curious to hear
-// from physicians and researchers on their experience.
-//
+
+ VolumetricAnalysis_Medicine.java
+
+ This script allows the user to select a point on a CT scan,
+ finds the entire volume of the selected point, and isolates it.
+ The plugin then calculates volume and dimensions, as well as visualizes
+ the volume. This is intended for medical use as a tool for researchers and
+ doctors to visualize complex anatomy.
+
+ Author: Jonathan Collard de Beaufort, jonathancdb@gmail.com
+ May 2024
+
+ If you download and/or use this script, please email me. I am curious to hear
+ from physicians and researchers on their experience.
+ 
+ To cite this file: 
+
+
+*/
 
 import ij.IJ;
 import ij.ImagePlus;
