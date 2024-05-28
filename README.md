@@ -17,9 +17,7 @@
 
 Welcome to the Volumetric Analysis in Medicine!
 
-This software is designed specifically for physicians and researchers, enabling the user to select and visualize anatomical structures on a CT scan and calculate their volume with ease.
-
-VolumetricAnalysis_Medicine intends to provide a greater ability to analyze and describe complex patient anatomy. For the latter, this tool allows the user to describe the selected anatomy, such as but not limited to volume, cubic volume, and dimensions.
+The code offers physicians and researchers the option to select a feature on a medical scan, isolate and visualize the structure, and calculate its volume.
 
 ![alt text](VolumeViewer_Image.png)
 
